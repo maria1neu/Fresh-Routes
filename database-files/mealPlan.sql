@@ -1,0 +1,10 @@
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (1, '1/4/2025', '3/27/2025', 28);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (2, '10/29/2025', '11/13/2025', 4);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (3, '2/11/2025', '4/10/2025', 5);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (4, '2/8/2025', '6/8/2025', 4);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (5, '6/26/2025', '12/6/2024', 38);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (6, '10/28/2025', null, 39);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (7, '5/9/2025', null, 21);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (8, '12/6/2024', '2/2/2025', 43);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (9, '8/3/2025', '9/21/2025', 13);
+insert into mealPlan (mealPlanID, startDate, endDate, customerID) values (10, '10/29/2025', '5/4/2025', 26);
