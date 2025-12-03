@@ -1,0 +1,12 @@
+insert into Demand (produceID, forcastID, predictedDemand) values (11, 1, 473.73);
+insert into Demand (produceID, forcastID, predictedDemand) values (13, 2, 44.23);
+insert into Demand (produceID, forcastID, predictedDemand) values (12, 3, 859.14);
+insert into Demand (produceID, forcastID, predictedDemand) values (6, 4, 85.81);
+insert into Demand (produceID, forcastID, predictedDemand) values (10, 5, 708.52);
+insert into Demand (produceID, forcastID, predictedDemand) values (3, 6, 74.81);
+insert into Demand (produceID, forcastID, predictedDemand) values (14, 7, 606.66);
+insert into Demand (produceID, forcastID, predictedDemand) values (8, 8, 572.84);
+insert into Demand (produceID, forcastID, predictedDemand) values (9, 9, 580.85);
+insert into Demand (produceID, forcastID, predictedDemand) values (3, 10, 83.77);
+insert into Demand (produceID, forcastID, predictedDemand) values (8, 11, 985.98);
+insert into Demand (produceID, forcastID, predictedDemand) values (7, 12, 873.31);

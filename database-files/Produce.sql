@@ -1,0 +1,15 @@
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (1, 'non velit nec nisi', '3/4/2025', 352, 18, 'kg');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (2, 'nisl duis bibendum', '8/1/2025', 3, 43, 'bunches');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (3, 'aliquet pulvinar sed', '9/1/2025', 256, 75, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (4, 'proin interdum mauris', '11/23/2025', 213, 21, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (5, 'cum sociis natoque', '3/22/2025', 340, 14, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (6, 'purus sit amet', '1/2/2025', 446, 61, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (7, 'habitasse platea dictumst', '12/28/2024', 289, 87, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (8, 'sem fusce consequat', '6/3/2025', 142, 55, 'lbs');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (9, 'molestie lorem quisque ut', '12/10/2024', 214, 37, 'kg');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (10, 'quam pede lobortis', '12/16/2024', 133, 3, 'lbs');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (11, 'erat quisque erat', '9/21/2025', 123, 1, 'lbs');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (12, 'natoque penatibus et magnis', '5/17/2025', 329, 1, 'lbs');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (13, 'ligula vehicula consequat morbi', '4/4/2025', 355, 48, 'bunches');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (14, 'sed justo pellentesque', '12/20/2024', 388, 99, 'pieces');
+insert into Produce (ProduceID, Name, expectedHarvestDate, quantityAvailable, popularityScore, UNIT) values (15, 'nam ultrices libero', '11/30/2025', 241, 10, 'kg');
