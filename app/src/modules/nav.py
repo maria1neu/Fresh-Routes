@@ -17,7 +17,7 @@ def AboutPageNav():
 #### ------------------------ Examples for Role of pol_strat_advisor ------------------------
 def PolStratAdvHomeNav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Customer_Home.py", label="Political Strategist Home", icon="👤"
     )
 
 
@@ -35,7 +35,7 @@ def MapDemoNav():
 
 def usaidWorkerHomeNav():
     st.sidebar.page_link(
-      "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
+      "pages/10_Farmer_Home.py", label="USAID Worker Home", icon="🏠"
     )
 
 def NgoDirectoryNav():
