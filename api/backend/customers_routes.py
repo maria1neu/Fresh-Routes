@@ -1,5 +1,8 @@
 from flask import Blueprint, request, jsonify
 
+"""
+Create routes for Customer persona blueprint
+"""
 customers_routes = Blueprint('customers_routes', __name__)
 
 @customers_routes.post("customers")
