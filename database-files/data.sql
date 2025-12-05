@@ -1,3 +1,7 @@
+"""
+Creating tables and adding all the mock data to them
+"""
+
 Drop database if exists 25_FreshRoute;
 CREATE DATABASE IF NOT EXISTS 25_FreshRoute;
 USE 25_FreshRoute;
