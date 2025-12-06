@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 from backend.db_connection import db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngos
-from backend.customers_routes import customers_routes
+from backend import customers_routes
 
 
 def create_app():
