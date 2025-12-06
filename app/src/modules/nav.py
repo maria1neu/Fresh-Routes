@@ -22,14 +22,14 @@ def CustomerHomeNav():
     )
 
 
-def WorldBankVizNav():
+def MealPreferencesNav():
     st.sidebar.page_link(
-        "pages/01_Meal_Preferences.py", label="World Bank Visualization", icon="🏦"
+        "pages/01_Meal_Preferences.py", label="Meal Preferences", icon="🏦"
     )
 
 
-def MapDemoNav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
+def MealPlanNav():
+    st.sidebar.page_link("pages/02_Meal_Plan.py", label="Meal Plan", icon="🗺️")
 
 
 ## ------------------------ Examples for Role of Farmer ------------------------
@@ -43,13 +43,13 @@ def ProduceEditNav():
         "pages/11_Produce_Edit.py", label="Produce Editor", icon="🚜")
 
 def IngredientDirectoryNav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="Ingredient Directory", icon="📁")
+    st.sidebar.page_link("pages/14_Ingredient_Directory.py", label="Ingredient Directory", icon="📁")
 
 #def AddNgoNav():
    # st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
 
 def IngredientPredictorNav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Ingredient Predictor", icon="📈")
+    st.sidebar.page_link("pages/12_Ingredient_Predict.py", label="Ingredient Predictor", icon="📈")
 
 
 #def ClassificationNav():
@@ -58,14 +58,31 @@ def IngredientPredictorNav():
    # )
 
 
+## ------------------------ Examples for Role of Driver ------------------------
+
+def DriverHomeNav():
+    st.sidebar.page_link(
+      "pages/22_Driver_Home.py", label="Your Home", icon="🏠"
+    )
+def AvailabilityCalendarNav():
+    st.sidebar.page_link(
+        "pages/23_Availability_Calendar.py", label="Availability Calendar", icon="🚜")
+
+def RoutePlannerNav():
+    st.sidebar.page_link("pages/24_Route_Planner.py", label="Route Planner", icon="📁")
 
 
 
 #### ------------------------ System Admin Role ------------------------
 def AdminPageNav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
+    st.sidebar.page_link("pages/25_Admin_Home.py", label="System Admin", icon="🖥️")
+def RecipeCreatorNav():
     st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
+        "pages/26_Recipe_Creator.py", label="Recipe Creator", icon="🏢"
+    )
+def CustomerAccountsNav():
+    st.sidebar.page_link(
+        "pages/27_Customer_Accounts.py", label="Customer Accounts", icon="🏢"
     )
 
 
@@ -91,24 +108,29 @@ def SideBarLinks(show_home=False):
     if st.session_state["authenticated"]:
 
         # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
-        if st.session_state["role"] == "pol_strat_advisor":
+        if st.session_state["role"] == "customer":
             CustomerHomeNav()
-            WorldBankVizNav()
-            MapDemoNav()
+            MealPreferencesNav()
+            MealPlanNav()
 
         # If the user role is usaid worker, show the Api Testing page
-        if st.session_state["role"] == "usaid_worker":
+        if st.session_state["role"] == "farmer":
             FarmerHomeNav()
             IngredientDirectoryNav()
-            #AddNgoNav()
             ProduceEditNav()
             IngredientPredictorNav()
-            #ClassificationNav()
-            
+
+        # If the user role is Delivery Driver, show the Api Testing page
+        if st.session_state["role"] == "driver":
+            DriverHomeNav()
+            AvailabilityCalendarNav()
+            RoutePlannerNav()
 
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
             AdminPageNav()
+            RecipeCreatorNav()
+            CustomerAccountsNav()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()

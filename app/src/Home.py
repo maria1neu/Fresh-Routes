@@ -50,10 +50,10 @@ if st.button("Act as Daniel, a Customer",
     # when user clicks the button, they are now considered authenticated
     st.session_state['authenticated'] = True
     # we set the role of the current user
-    st.session_state['role'] = 'pol_strat_advisor'
+    st.session_state['role'] = 'customer'
     # we add the first name of the user (so it can be displayed on 
     # subsequent pages). 
-    st.session_state['first_name'] = 'John'
+    st.session_state['first_name'] = 'Daniel'
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Customer")
@@ -63,25 +63,25 @@ if st.button('Act as Maria, a Farmer',
             type = 'primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
+    st.session_state['role'] = 'farmer'
+    st.session_state['first_name'] = 'Maria'
     st.switch_page('pages/10_Farmer_Home.py')
 
-if st.button('Act as Maria, a Delivery Driver',
+if st.button('Act as Bob, a Delivery Driver',
             type='primary',
             use_container_width=True):
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
-    st.switch_page('pages/10_Farmer_Home.py')
+    st.session_state['role'] = 'driver'
+    st.session_state['first_name'] = 'Bob'
+    st.switch_page('pages/22_Driver_Home.py')
 
 if st.button('Act as Lancy, an Administrator',
             type = 'primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.session_state['first_name'] = 'Lancy'
+    st.switch_page('pages/25_Admin_Home.py')
 
 
 
