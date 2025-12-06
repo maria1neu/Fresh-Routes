@@ -35,7 +35,7 @@ def MapDemoNav():
 
 def usaidWorkerHomeNav():
     st.sidebar.page_link(
-      "pages/10_Farmer_Home.py", label="USAID Worker Home", icon="🏠"
+      "pages/00_Customer_Home.py", label="Your Home", icon="🏠"
     )
 
 def NgoDirectoryNav():
