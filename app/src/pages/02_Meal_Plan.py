@@ -13,12 +13,10 @@ SideBarLinks()
 add_logo("assets/logo.png", height=400)
 
 # set up the page
-st.markdown("# Mapping Demo")
-st.sidebar.header("Mapping Demo")
+st.markdown("# Meal Plan")
+st.sidebar.header("Meal Plan")
 st.write(
-    """This Mapping Demo is from the Streamlit Documentation. It shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data."""
+    """Here you can see your meal plan and create your own customizable menue"""
 )
 
 

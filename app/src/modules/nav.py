@@ -6,6 +6,7 @@ import streamlit as st
 
 
 #### ------------------------ General ------------------------
+"""Home home page for all. Where you can pick each persona sidebar"""
 def HomeNav():
     st.sidebar.page_link("Home.py", label="Home", icon="🏠")
 
@@ -14,10 +15,10 @@ def AboutPageNav():
     st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
 
 
-#### ------------------------ Examples for Role of pol_strat_advisor ------------------------
+#### ------------------------ Examples for Role of Customer ------------------------
 def PolStratAdvHomeNav():
     st.sidebar.page_link(
-        "pages/00_Customer_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Customer_Home.py", label="Customer Home", icon="👤"
     )
 
 
