@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request
 from backend.db_connection import db
 from mysql.connector import Error
-from flask import current_app
 
 # Blueprint for customer-facing routes
 driver_routes = Blueprint("driver_routes", __name__)
@@ -91,8 +90,8 @@ def create_issue_report(orderID):
         cursor = db.get_db().cursor()
 
         query = """
-            INSERT INTO DeliveryIssue (issueID, timestamp, description)
-            VALUES (%s, %s, %s)
+            INSERT INTO DeliveryIssue (issueID, timestamp, description, orderID)
+            VALUES (%s, %s, %s, %s)
         """
 
         cursor.execute(
