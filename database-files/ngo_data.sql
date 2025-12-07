@@ -21,7 +21,7 @@ VALUES
 (2, 'Lyon', 'Levee', 'llevee1@auda.org.au', 'vegetarian', 'protein'),
 (3, 'Garrott', 'Fairfull', 'gfairfull2@ifeng.com', 'pescatarian', 'heart_health'),
 (4, 'Carolin', 'Jessel', 'cjessel3@hhs.gov', 'gluten_free', 'weight_loss'),
-(5, 'Rosella', 'Thurgood', 'rthurgood4@meetup.com', 'vegetarian', 'muscle_gain'),
+(5, 'Daniel', 'Thurgood', 'rthurgood4@meetup.com', 'vegetarian', 'muscle_gain'),
 (6, 'Vivyanne', 'Boyington', 'vboyington5@ycombinator.com', 'pescatarian', 'muscle_gain'),
 (7, 'Norma', 'Ferber', 'nferber6@netvibes.com', 'pescatarian', 'weight_loss'),
 (8, 'Etta', 'Downton', 'edownton7@ucla.edu', 'pescatarian', 'heart_health'),

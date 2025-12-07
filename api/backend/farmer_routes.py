@@ -65,7 +65,7 @@ def create_produce():
 @farmer_routes.route("/produce/<int:produceID>", methods=["GET"])
 def get_produce(produceID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -162,7 +162,7 @@ def get_recipes():
 @farmer_routes.route("/farmers/<int:farmerID>/inventory", methods=["GET"])
 def get_farmer_inventory(farmerID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -261,7 +261,7 @@ def update_farmer_inventory(farmerID, inventoryID):
 @farmer_routes.route("/demand/produce/<int:produceID>", methods=["GET"])
 def get_demand(produceID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -291,7 +291,7 @@ def get_inventory():
         if not farmerID:
             return jsonify({"error": "farmerID query parameter required"}), 400
 
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -318,7 +318,7 @@ def get_inventory():
 @farmer_routes.route("/debug-test")
 def debug_test():
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
         cursor.execute("SELECT COUNT(*) AS n FROM Recipe;")
         result = cursor.fetchone()
         return {"recipe_count": result["n"]}, 200

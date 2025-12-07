@@ -50,7 +50,7 @@ def create_customer():
 @customer_routes.route("/customers/<int:customer_id>", methods=["GET"])
 def get_customer(customer_id):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -125,7 +125,7 @@ def update_nutrition_goals(customerID):
 @customer_routes.route("/customers/<int:customer_id>/notifications", methods=["GET"])
 def get_menu_notifications(customer_id):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         query = """
             SELECT notificationID, timestamp, message, farmerID, customerID
@@ -146,7 +146,7 @@ def get_menu_notifications(customer_id):
 @customer_routes.route("/recipie/<int:recipe_id>", methods=["GET"])
 def get_detailed_repice(recipeID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         query = """
             SELECT r.recipeID, r.name, r.description, r.nutritionInfo, r.cuisineType,
@@ -291,7 +291,7 @@ def update_customer(customer_id):
 @customer_routes.route("/customers/<int:customer_id>/messages", methods=["GET"])
 def get_customer_messages(customer_id):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         query = 
             SELECT messageID, content, timestamp, customerID

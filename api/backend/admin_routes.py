@@ -32,7 +32,7 @@ def delete_customer(customer_id):
 @admin_routes.route("/customer/<int:customerID>/customermessages", methods=["GET"])
 def get_customer_message_history(customerID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -267,7 +267,7 @@ def update_farmer(farmerID):
 @admin_routes.route("/weekly_menu/", methods=["GET"])
 def get_weekly_menu():
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """

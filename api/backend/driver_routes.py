@@ -9,7 +9,7 @@ driver_routes = Blueprint("driver_routes", __name__)
 @driver_routes.route("/driver/<int:driverID>/order", methods=["GET"])
 def get_all_deliveries(driverID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -116,7 +116,7 @@ def create_issue_report(orderID):
 @driver_routes.route("/driver/<int:driverID>/deliverymessage", methods=["GET"])
 def get_message(driverID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
@@ -177,7 +177,7 @@ def send_message(driverID):
 @driver_routes.route("/driver/<int:driverID>/driveravailability", methods=["GET"])
 def get_availability(driverID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """SELECT availabilityID, availStartTime, availEndTime, locationZone, date, isAvailable, driverID
@@ -246,7 +246,7 @@ def update_driver_availability(driverID):
 @driver_routes.route("/driver/<int:driverID>/traffic", methods=["GET"])
 def get_driver_route(driverID):
     try:
-        cursor = db.get_db().cursor(dictionary=True)
+        cursor = db.get_db().cursor()
 
         cursor.execute(
             """
