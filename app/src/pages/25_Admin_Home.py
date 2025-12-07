@@ -49,7 +49,7 @@ st.markdown("""
 # ---- Hero Section ----
 st.markdown(f"""
 <div class="hero">
-    <h1>🛠️ Welcome, {st.session_state['first_name']}</h1>
+    <h1>💻 Welcome, {st.session_state['first_name']}</h1>
     <p>System Admin Dashboard</p>
 </div>
 """, unsafe_allow_html=True)
