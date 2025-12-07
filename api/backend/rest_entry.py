@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 from backend.db_connection import db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngos
-from backend import customers_routes
+from backend.customers_routes import customer_routes
 
 
 def create_app():
@@ -53,7 +53,7 @@ def create_app():
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngos, url_prefix="/ngo")
 
-    app.register_blueprint(customers_routes)
+    app.register_blueprint(customer_routes, url_prefix="/c")
 
 
     # Don't forget to return the app object
