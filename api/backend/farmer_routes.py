@@ -88,7 +88,7 @@ def get_produce(produceID):
 
 #Update produce attributes
 @farmer_routes.route("/produce/<int:produceID>", methods=["PUT"])
-def update_inventory_entry(produceID):
+def update_produce(produceID):
     try:
         data = request.get_json()
 
@@ -133,7 +133,42 @@ def update_inventory_entry(produceID):
 
     except Error as e:
         return jsonify({"error": str(e)}), 500
-    
+
+# Return all recipes with filtering by popularity
+@farmer_routes.route("/recipe", methods=["GET"])
+def get_recipes():
+    try:
+        cursor = db.get_db().cursor(dictionary=True)
+
+        # Optional filter
+        min_popularity = request.args.get("minPopularity")
+
+        if min_popularity:
+            query = """
+                SELECT recipeID, name, description, popularityScore
+                FROM Recipe
+                WHERE popularityScore >= %s
+                ORDER BY popularityScore DESC
+            """
+            cursor.execute(query, (min_popularity,))
+        else:
+            query = """
+                SELECT recipeID, name, description, popularityScore
+                FROM Recipe
+                ORDER BY popularityScore DESC
+            """
+            cursor.execute(query)
+
+        recipes = cursor.fetchall()
+        cursor.close()
+
+        if not recipes:
+            return jsonify({"error": "No recipes found"}), 404
+
+        return jsonify(recipes), 200
+
+    except Error as e:
+        return jsonify({"error": str(e)}), 500
 # Inventory list for farmer
 @farmer_routes.route("/farmers/<int:farmerID>/inventory", methods=["GET"])
 def get_farmer_inventory(farmerID):
@@ -197,7 +232,7 @@ def add_new_inventory_entry(farmerID):
 
 # Add a new inventory entry
 @farmer_routes.route("/farmers/<int:farmerID>/Inventory/<int:inventoryID>", methods=["PUT"])
-def update_inventory_entry(farmerID, inventoryID):
+def update_farmer_inventory(farmerID, inventoryID):
     try:
         data = request.get_json()
 
@@ -259,7 +294,7 @@ def get_demand(produceID):
         return jsonify({"error": str(e)}), 500
 
 # List all orders containing this farmer's produce
-@farmer_routes.route("/orders", methods=["GET"])
+@farmer_routes.route("/order", methods=["GET"])
 def get_inventory():
     try:
         farmerID = request.args.get("farmerID")
@@ -272,11 +307,11 @@ def get_inventory():
         cursor.execute(
             """
             SELECT o.orderID, o.status, o.customerID, o.driverID
-            FROM Orders o
+            FROM `Order` o
             JOIN OrderProduce op ON o.orderID = op.orderID
-            JOIN Produce p ON op.produceID = p.produceID
-            JOIN InventoryEntry i ON p.produceID = i.produceID
+            JOIN InventoryEntry i ON op.produceID = i.produceID AND i.farmerID = %s
             WHERE i.farmerID = %s
+
             """,
             (farmerID,),
         )
