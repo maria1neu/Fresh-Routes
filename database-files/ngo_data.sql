@@ -2,9 +2,9 @@
 Creating tables and adding all the mock data to them
 """
 
-Drop database if exists 25_FreshRoute;
-CREATE DATABASE IF NOT EXISTS 25_FreshRoute;
-USE 25_FreshRoute;
+Drop database if exists ngo_data;
+CREATE DATABASE IF NOT EXISTS ngo_data;
+USE ngo_data;
 
 -- check not nulls for primary keys
 
