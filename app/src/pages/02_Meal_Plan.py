@@ -118,23 +118,22 @@ for i, day in enumerate(week_days):
         st.markdown(f"<div class='day-title'>{day[:3].upper()}</div>", unsafe_allow_html=True)
 
         for meal in ["Breakfast", "Lunch", "Dinner"]:
-            with st.container():
-                st.markdown("<div class='meal-card'>", unsafe_allow_html=True)
 
-                # Remove button
-                remove_key = f"remove-{day}-{meal}"
-                if st.button("✖", key=remove_key):
-                    st.session_state.meal_plan[day][meal] = None
+            st.markdown("<div class='meal-card'>", unsafe_allow_html=True)
 
-                st.markdown(f"<div class='meal-name'>{meal}</div>", unsafe_allow_html=True)
+            remove_key = f"remove-{day}-{meal}"
+            if st.button("✖", key=remove_key):
+                st.session_state.meal_plan[day][meal] = None
 
-                current = st.session_state.meal_plan[day][meal]
-                if current:
-                    st.write(current)
-                else:
-                    st.write("Name")
+            st.markdown(f"<div class='meal-name'>{meal}</div>", unsafe_allow_html=True)
 
-                st.markdown("</div>", unsafe_allow_html=True)
+            current_meal = st.session_state.meal_plan[day][meal]
+            if current_meal:
+                st.write(current_meal)
+            else:
+                st.write("Name")
+
+            st.markdown("</div>", unsafe_allow_html=True)
 
 st.divider()
 
