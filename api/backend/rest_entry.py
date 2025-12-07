@@ -53,8 +53,7 @@ def create_app():
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngos, url_prefix="/ngo")
 
-    app.register_blueprint(customer_routes)
-
+    app.register_blueprint(customer_routes, url_prefix="/c")
 
     # Don't forget to return the app object
     return app

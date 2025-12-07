@@ -597,10 +597,36 @@ CREATE TABLE IF NOT EXISTS weeklyMenu(
 
 INSERT INTO weeklyMenu (menuID, weekNumber) 
 VALUES
-(1, 5),
-(4, 13),
-(2, 3),
-(2, 15);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20),
+(21, 21),
+(22, 22),
+(23, 23),
+(24, 24),
+(25, 25),
+(26, 26),
+(27, 27),
+(28, 28),
+(29, 29),
+(30, 30);
 
 -- Recipe weekly menu
 CREATE TABLE IF NOT EXISTS Recipe_WeeklyMenu(
@@ -752,26 +778,26 @@ CREATE TABLE IF NOT EXISTS Notification
 
 INSERT INTO Notification (notificationID, timestamp, message, FarmerID, customerID) 
 VALUES 
-(1, '11/9/2025', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.', 7, 5),
-(2, '11/10/2025', 'Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.', 28, 8),
-(3, '12/7/2024', 'Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl.', 28, 8),
-(4, '1/26/2025', 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', 43, 8),
-(5, '4/10/2025', 'Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.', 20, 1),
-(6, '8/12/2025', 'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl.', 7, 4),
-(7, '10/23/2025', 'Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc.', 43, 7),
-(8, '6/28/2025', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat.', 23, 1),
-(9, '6/24/2025', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.', 18, 2),
-(10, '1/15/2025', 'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 25, 2),
-(11, '4/5/2025', 'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.',  37, 5),
-(12, '8/24/2025', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit.', 24, 7),
-(13, '9/24/2025', 'Suspendisse potenti. Nullam porttitor lacus at turpis.', 31, 7),
-(14, '7/19/2025', 'Maecenas pulvinar lobortis est. Phasellus sit amet erat.', 3, 8),
-(15, '6/12/2025', 'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.', 44, 8),
-(16, '3/13/2025', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.', 23, 1),
-(17, '2/22/2025', 'Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.', 37, 6),
-(18, '5/5/2025', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', 21, 8),
-(19, '4/9/2025', 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 23, 3),
-(20, '8/16/2025','Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.', 13, 8); 
+(1, '2025-11-09', 'Your order has been shipped!', 5, 7),
+(2, '2025-11-10', 'New produce available from your favorite farmer.', 8, 28),
+(3, '2025-12-07', 'Delivery scheduled for tomorrow.', 8, 28),
+(4, '2025-01-26', 'Weekly menu updated with new recipes.', 8, 43),
+(5, '2025-04-10', 'Your subscription has been renewed.', 1, 20),
+(6, '2025-08-12', 'Fresh harvest arriving this week!', 4, 7),
+(7, '2025-10-23', 'Special discount on seasonal produce.', 7, 43),
+(8, '2025-06-28', 'Your meal plan has been updated.', 1, 23),
+(9, '2025-06-24', 'Driver en route with your delivery.', 2, 18),
+(10, '2025-01-15', 'Thank you for your order!', 2, 25),
+(11, '2025-04-05', 'New farmer joined the network.', 5, 37),
+(12, '2025-08-24', 'Your feedback has been received.', 7, 24),
+(13, '2025-09-24', 'Order confirmed for next week.', 7, 31),
+(14, '2025-07-19', 'Produce quality report available.', 8, 3),
+(15, '2025-06-12', 'Reminder: Update your dietary preferences.', 8, 44),
+(16, '2025-03-13', 'Your order is being prepared.', 1, 23),
+(17, '2025-02-22', 'Welcome to FreshRoutes!', 6, 37),
+(18, '2025-05-05', 'Seasonal produce now in stock.', 8, 21),
+(19, '2025-04-09', 'Delivery completed successfully.', 3, 23),
+(20, '2025-08-16', 'Rate your recent order.', 8, 13);
 
 CREATE TABLE IF NOT EXISTS Traffic
 (

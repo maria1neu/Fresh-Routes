@@ -18,18 +18,21 @@ def AboutPageNav():
 #### ------------------------ Examples for Role of Customer ------------------------
 def CustomerHomeNav():
     st.sidebar.page_link(
-        "pages/00_Customer_Home.py", label="Customer Home", icon="👤"
+        "pages/00_Customer_Home.py", label="Customer Home", icon="🏠"
     )
 
 
 def MealPreferencesNav():
     st.sidebar.page_link(
-        "pages/01_Meal_Preferences.py", label="Meal Preferences", icon="🏦"
+        "pages/01_Meal_Preferences.py", label="Meal Preferences", icon="🥗"
     )
 
 
 def MealPlanNav():
-    st.sidebar.page_link("pages/02_Meal_Plan.py", label="Meal Plan", icon="🗺️")
+    st.sidebar.page_link("pages/02_Meal_Plan.py", label="Meal Plan", icon="🗓️️")
+
+def CustomerChatNav():
+    st.sidebar.page_link("pages/03_Chat_Page.py", label="Chat Page", icon="💬️")
 
 
 ## ------------------------ Examples for Role of Farmer ------------------------
@@ -45,17 +48,9 @@ def ProduceEditNav():
 def IngredientDirectoryNav():
     st.sidebar.page_link("pages/14_Ingredient_Directory.py", label="Ingredient Directory", icon="📁")
 
-#def AddNgoNav():
-   # st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
 
 def IngredientPredictorNav():
-    st.sidebar.page_link("pages/12_Ingredient_Predict.py", label="Ingredient Predictor", icon="📈")
-
-
-#def ClassificationNav():
-    #st.sidebar.page_link(
-   #     "pages/13_Classification.py", label="Classification Demo", icon="🌺"
-   # )
+    st.sidebar.page_link("pages/12_Ingredient_Predict.py", label="Ingredient Predictor", icon="📊")
 
 
 ## ------------------------ Examples for Role of Driver ------------------------
@@ -66,23 +61,23 @@ def DriverHomeNav():
     )
 def AvailabilityCalendarNav():
     st.sidebar.page_link(
-        "pages/23_Availability_Calendar.py", label="Availability Calendar", icon="🚜")
+        "pages/23_Availability_Calendar.py", label="Availability Calendar", icon="🗓️")
 
 def RoutePlannerNav():
-    st.sidebar.page_link("pages/24_Route_Planner.py", label="Route Planner", icon="📁")
+    st.sidebar.page_link("pages/24_Route_Planner.py", label="Route Planner", icon="🧭")
 
 
 
 #### ------------------------ System Admin Role ------------------------
 def AdminPageNav():
-    st.sidebar.page_link("pages/25_Admin_Home.py", label="System Admin", icon="🖥️")
+    st.sidebar.page_link("pages/25_Admin_Home.py", label="System Admin", icon="🏠")
 def RecipeCreatorNav():
     st.sidebar.page_link(
-        "pages/26_Recipe_Creator.py", label="Recipe Creator", icon="🏢"
+        "pages/26_Recipe_Creator.py", label="Recipe Creator", icon="📖"
     )
 def CustomerAccountsNav():
     st.sidebar.page_link(
-        "pages/27_Customer_Accounts.py", label="Customer Accounts", icon="🏢"
+        "pages/27_Customer_Accounts.py", label="Customer Accounts", icon="👥"
     )
 
 
@@ -112,12 +107,13 @@ def SideBarLinks(show_home=False):
             CustomerHomeNav()
             MealPreferencesNav()
             MealPlanNav()
+            CustomerChatNav()
 
         # If the user role is usaid worker, show the Api Testing page
         if st.session_state["role"] == "farmer":
             FarmerHomeNav()
-            IngredientDirectoryNav()
             ProduceEditNav()
+            IngredientDirectoryNav()
             IngredientPredictorNav()
 
         # If the user role is Delivery Driver, show the Api Testing page
