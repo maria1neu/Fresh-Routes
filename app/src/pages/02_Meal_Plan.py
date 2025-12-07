@@ -146,33 +146,65 @@ st.subheader("Available Recipes")
 
 recipe_cols = st.columns(5)
 
-# Example recipes — replace with DB query later if needed
-recipe_examples = [
-    "Lemon Herb Chicken",
-    "Veggie Stir Fry",
-    "Pasta Primavera",
-    "Quinoa Bowl",
-    "Tofu Curry"
+# Updated recipe list with real data
+recipes = [
+    {
+        "name": "Lemon Herb Chicken",
+        "desc": "A bright, refreshing high-protein chicken dish marinated in lemon, garlic, and herbs.",
+        "ingredients": "Chicken • Lemon • Garlic • Parsley • Olive Oil",
+        "img": "https://images.unsplash.com/photo-1604908177522-f9c49a0a2c3c"
+    },
+    {
+        "name": "Veggie Stir-Fry",
+        "desc": "A colorful plant-based stir-fry tossed in a soy-ginger glaze.",
+        "ingredients": "Broccoli • Bell Peppers • Carrots • Soy Sauce • Ginger",
+        "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
+    },
+    {
+        "name": "Pasta Primavera",
+        "desc": "A classic Italian pasta tossed with seasonal vegetables and garlic.",
+        "ingredients": "Pasta • Zucchini • Tomatoes • Garlic • Parmesan",
+        "img": "https://images.unsplash.com/photo-1523986371872-9d3ba2e2f5ab"
+    },
+    {
+        "name": "Quinoa Bowl",
+        "desc": "A nourishing bowl of quinoa, roasted veggies, chickpeas, and lemon-tahini sauce.",
+        "ingredients": "Quinoa • Sweet Potato • Spinach • Chickpeas • Tahini",
+        "img": "https://images.unsplash.com/photo-1512621776951-8b6f6d7d7b03"
+    },
+    {
+        "name": "Tofu Coconut Curry",
+        "desc": "A creamy coconut curry with tofu, vegetables, and warm spices.",
+        "ingredients": "Tofu • Coconut Milk • Curry Paste • Carrots • Basil",
+        "img": "https://images.unsplash.com/photo-1605479319499-dafebb69c3c9"
+    },
 ]
 
 for idx, col in enumerate(recipe_cols):
+    recipe = recipes[idx]
     with col:
         st.markdown("<div class='recipe-card'>", unsafe_allow_html=True)
 
-        st.markdown("<div class='recipe-title'>TITLE RECIPE</div>", unsafe_allow_html=True)
-        st.markdown("<div class='recipe-body'>Body text for whatever you'd like to say. Add main takeaway points, quotes, or anecdotes.</div>", unsafe_allow_html=True)
+        # Image
+        st.image(recipe["img"], use_column_width=True)
 
-        recipe_name = recipe_examples[idx]
-        select_key = f"select-recipe-{idx}"
+        # Title
+        st.markdown(f"<div class='recipe-title'>{recipe['name']}</div>", unsafe_allow_html=True)
 
-        if st.button("SELECT", key=select_key):
-            st.session_state["selected_recipe"] = recipe_name
-            st.success(f"Selected recipe: {recipe_name}")
+        # Description
+        st.markdown(f"<div class='recipe-body'>{recipe['desc']}</div>", unsafe_allow_html=True)
+
+        # Ingredients
+        st.markdown(f"**Ingredients:** {recipe['ingredients']}")
+
+        # Select button
+        if st.button("SELECT", key=f"select-recipe-{idx}"):
+            st.session_state["selected_recipe"] = recipe["name"]
+            st.success(f"Selected recipe: {recipe['name']}")
 
         st.markdown("</div>", unsafe_allow_html=True)
 
 st.divider()
-
 
 # ===============================
 #   ASSIGN SELECTED RECIPE TO MEAL
