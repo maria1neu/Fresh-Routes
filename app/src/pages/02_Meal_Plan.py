@@ -146,63 +146,74 @@ st.subheader("Available Recipes")
 
 recipe_cols = st.columns(5)
 
-# Updated recipe list with real data
+# Updated recipe list with real data + emojis + short headers
 recipes = [
     {
+        "emoji": "🍋",
         "name": "Lemon Herb Chicken",
+        "short": "Bright lemon-garlic chicken.",
         "desc": "A bright, refreshing high-protein chicken dish marinated in lemon, garlic, and herbs.",
-        "ingredients": "Chicken • Lemon • Garlic • Parsley • Olive Oil",
-        "img": "https://images.unsplash.com/photo-1604908177522-f9c49a0a2c3c"
+        "ingredients": "Chicken • Lemon • Garlic • Parsley • Olive Oil"
     },
     {
+        "emoji": "🥦",
         "name": "Veggie Stir-Fry",
+        "short": "Colorful soy-ginger stir-fry.",
         "desc": "A colorful plant-based stir-fry tossed in a soy-ginger glaze.",
-        "ingredients": "Broccoli • Bell Peppers • Carrots • Soy Sauce • Ginger",
-        "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
+        "ingredients": "Broccoli • Bell Peppers • Carrots • Soy Sauce • Ginger"
     },
     {
+        "emoji": "🍝",
         "name": "Pasta Primavera",
+        "short": "Light pasta with veggies.",
         "desc": "A classic Italian pasta tossed with seasonal vegetables and garlic.",
-        "ingredients": "Pasta • Zucchini • Tomatoes • Garlic • Parmesan",
-        "img": "https://images.unsplash.com/photo-1523986371872-9d3ba2e2f5ab"
+        "ingredients": "Pasta • Zucchini • Tomatoes • Garlic • Parmesan"
     },
     {
+        "emoji": "🥗",
         "name": "Quinoa Bowl",
+        "short": "Protein-packed quinoa bowl.",
         "desc": "A nourishing bowl of quinoa, roasted veggies, chickpeas, and lemon-tahini sauce.",
-        "ingredients": "Quinoa • Sweet Potato • Spinach • Chickpeas • Tahini",
-        "img": "https://images.unsplash.com/photo-1512621776951-8b6f6d7d7b03"
+        "ingredients": "Quinoa • Sweet Potato • Spinach • Chickpeas • Tahini"
     },
     {
+        "emoji": "🍛",
         "name": "Tofu Coconut Curry",
+        "short": "Creamy coconut tofu curry.",
         "desc": "A creamy coconut curry with tofu, vegetables, and warm spices.",
-        "ingredients": "Tofu • Coconut Milk • Curry Paste • Carrots • Basil",
-        "img": "https://images.unsplash.com/photo-1605479319499-dafebb69c3c9"
+        "ingredients": "Tofu • Coconut Milk • Curry Paste • Carrots • Basil"
     },
 ]
 
+
+# We only display the top emoji/title/short description here
 for idx, col in enumerate(recipe_cols):
     recipe = recipes[idx]
     with col:
-        st.markdown("<div class='recipe-card'>", unsafe_allow_html=True)
 
-        # Image
-        st.image(recipe["img"], use_column_width=True)
+        # TOP CARD — White with yellow footer (your style)
+        st.markdown("""
+        <div style="
+            background-color: white;
+            border-radius: 14px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        ">
+            <div style="font-size: 2rem;">""" + recipe["emoji"] + """</div>
+            <div style="font-weight: 700; font-size: 1.1rem; margin-top: 0.4rem;">""" + recipe["name"] + """</div>
+            <div style="font-size: 0.85rem; color: #444;">""" + recipe["short"] + """</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-        # Title
-        st.markdown(f"<div class='recipe-title'>{recipe['name']}</div>", unsafe_allow_html=True)
-
-        # Description
-        st.markdown(f"<div class='recipe-body'>{recipe['desc']}</div>", unsafe_allow_html=True)
-
-        # Ingredients
-        st.markdown(f"**Ingredients:** {recipe['ingredients']}")
-
-        # Select button
-        if st.button("SELECT", key=f"select-recipe-{idx}"):
+        # SELECT button (same)
+        if st.button("SELECT", key=f"select-recipe-top-{idx}"):
             st.session_state["selected_recipe"] = recipe["name"]
-            st.success(f"Selected recipe: {recipe['name']}")
-
-        st.markdown("</div>", unsafe_allow_html=True)
+            st.success(f"Selected: {recipe['name']}")
 
 st.divider()
 
