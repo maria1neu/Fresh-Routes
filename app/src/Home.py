@@ -95,7 +95,7 @@ st.markdown(f"""
 
 <div class="hero">
     <img src="data:image/jpeg;base64,{bg_img}">
-    <div class="hero-text">Welcome to FreshRoutes</div>
+    <div class="hero-text">Welcome to Fresh Route!</div>
     <div class="hero-text"></div>
     <div class="hero-sub">
     Farm-fresh ingredients and smart delivery — powered by data.</div>
