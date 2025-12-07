@@ -140,24 +140,12 @@ def get_recipes():
     try:
         cursor = db.get_db().cursor(dictionary=True)
 
-        # Optional filter
-        min_popularity = request.args.get("minPopularity")
-
-        if min_popularity:
-            query = """
-                SELECT recipeID, name, description, popularityScore
-                FROM Recipe
-                ORDER BY popularityScore DESC
-                LIMIT 6
-            """
-            cursor.execute(query, (min_popularity,))
-        else:
-            query = """
+        query = """
                 SELECT recipeID, name, description, popularityScore
                 FROM Recipe
                 ORDER BY popularityScore DESC
             """
-            cursor.execute(query)
+        cursor.execute(query)
 
         recipes = cursor.fetchall()
         cursor.close()
@@ -326,3 +314,13 @@ def get_inventory():
 
     except Error as e:
         return jsonify({"error": str(e)}), 500
+    
+@farmer_routes.route("/debug-test")
+def debug_test():
+    try:
+        cursor = db.get_db().cursor(dictionary=True)
+        cursor.execute("SELECT COUNT(*) AS n FROM Recipe;")
+        result = cursor.fetchone()
+        return {"recipe_count": result["n"]}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500

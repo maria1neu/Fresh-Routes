@@ -12,10 +12,11 @@ st.title("Ingredient Directory")
 # API endpoint
 API_URL = "http://web-api:4000"
 
-response = requests.get(f"{API_URL}/recipe/top")
+response = requests.get(f"{API_URL}/recipe")
 
 if response.status_code == 200:
-    recipes = response.json()
+    all_recipes = response.json()
+    recipes = all_recipes[:6]
 else:
     st.error("Could not load recipes")
     recipes = []
