@@ -8,6 +8,9 @@ from backend.db_connection import db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngos
 from backend.customers_routes import customer_routes
+from backend.farmer_routes import farmer_routes
+from backend.driver_routes import driver_routes
+from backend.admin_routes import admin_routes
 
 
 def create_app():
@@ -54,6 +57,9 @@ def create_app():
     app.register_blueprint(ngos, url_prefix="/ngo")
 
     app.register_blueprint(customer_routes, url_prefix="/c")
+    app.register_blueprint(farmer_routes, url_prefix="/f")
+    app.register_blueprint(driver_routes, url_prefix="/d")
+    app.register_blueprint(admin_routes, url_prefix="/a")
 
     # Don't forget to return the app object
     return app
