@@ -160,3 +160,43 @@ st.markdown("""
 st.text_input("Send a message:", placeholder="Type here...")
 
 st.markdown("</div>", unsafe_allow_html=True)
+
+# ============================
+#   SAVE PREFERENCES SECTION
+# ============================
+
+with st.container():
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Save Your Preferences</div>", unsafe_allow_html=True)
+
+    st.write("Click below to save your updated dietary and delivery preferences.")
+
+    if st.button("💾 Save Preferences", use_container_width=True):
+
+        # Collect all preferences into a Python dict
+        preferences = {
+            "dietary": {
+                "vegetarian": vegetarian,
+                "vegan": vegan,
+                "gluten_free": gluten_free,
+                "high_protein": high_protein,
+                "dairy_free": dairy_free,
+                "nut_free": nut_free
+            },
+            "delivery_frequency": {
+                "once_week": once_week,
+                "twice_week": twice_week,
+                "every_other_week": every_other,
+                "monthly": monthly
+            },
+            "meals_per_delivery": meals,
+            "start_date": str(start_date)
+        }
+
+        # --- Placeholder for backend POST request ---
+        # Example:
+        # response = requests.put("http://localhost:4000/customers/1/preferences", json=preferences)
+
+        st.success("Your preferences have been saved successfully! 🎉")
+
+    st.markdown("</div>", unsafe_allow_html=True)
