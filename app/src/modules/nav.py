@@ -79,7 +79,10 @@ def CustomerAccountsNav():
     st.sidebar.page_link(
         "pages/27_Customer_Accounts.py", label="Customer Accounts", icon="👥"
     )
-
+def CustomerChatsNav():
+    st.sidebar.page_link(
+        "pages/28_Admin_Chats.py", label="Chat to Customers", icon="💬️"
+    )
 
 # --------------------------------Links Function -----------------------------------------------
 def SideBarLinks(show_home=False):

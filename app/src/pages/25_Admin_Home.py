@@ -55,7 +55,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ---- Action Cards ----
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
@@ -78,6 +78,18 @@ with col2:
     """, unsafe_allow_html=True)
     if st.button('Manage Accounts', use_container_width=True):
         st.switch_page('pages/27_Customer_Accounts.py')
+
+with col3:
+    st.markdown("""
+    <div class="action-card">
+        <div class="action-icon">💬</div>
+        <div class="section-title">Customer Chats</div>
+        <p>Respond to customer inquiries.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if st.button('Open Customer Chats', use_container_width=True):
+        st.switch_page('pages/28_Admin_Chat.py')
+
 
 # ---- Footer ----
 st.divider()
