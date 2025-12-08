@@ -7,19 +7,30 @@ from modules.nav import SideBarLinks
 
 SideBarLinks()
 
-st.write("# Accessing a REST API from Within Streamlit")
-"""
-Simply retrieving data from a REST api running in a separate Docker Container.
+API_URL = "http://web-api:4000"
 
-If the container isn't running, this will be very unhappy.  But the Streamlit app 
-should not totally die. 
-"""
+st.write("# Accessing Farmer Inventory")
 
-data = {} 
-try:
-  data = requests.get('http://web-api:4000/data').json()
-except:
-  st.write("**Important**: Could not connect to sample api, so using dummy data.")
-  data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
+with st.form('farmer_id'): 
 
-st.dataframe(data)
+    col1, spacer1, spacer2 = st.columns([1, 2, 2])
+    farmerID = col1.number_input("Farmer ID", min_value=1, step=1)
+    submit = st.form_submit_button("Submit")
+
+if submit: 
+    try:
+        response = requests.get(f"{API_URL}/f/farmers/{int(farmerID)}/inventory")
+
+        if response.status_code == 200:
+            inventory = response.json()
+            st.success(f"Found {len(inventory)} inventory entries.")
+            st.table(inventory)  # display table
+
+        elif response.status_code == 404:
+            st.warning("No inventory found for this farmer.")
+
+        else:
+            st.error(f"Error: {response.json().get('error')}")
+
+    except Exception as e:
+        st.error(f"Error connecting to API: {str(e)}")
