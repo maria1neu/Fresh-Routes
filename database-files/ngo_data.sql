@@ -121,7 +121,7 @@ VALUES
 (2, 'Wally Truitt'),
 (3, 'Ronnica Binfield'),
 (4, 'Blanch Shattock'),
-(5, 'Griffin Petyakov')
+(5, 'Griffin Petyakov'),
 (6, 'Bob Johnson');
 
 CREATE TABLE IF NOT EXISTS Orders(
@@ -504,17 +504,20 @@ CREATE TABLE IF NOT EXISTS Demand(
 INSERT INTO Demand (produceID, forcastID, predictedDemand) 
 VALUES 
 (11, 1, 473.73),
-(13, 2, 44.23),
+(1, 2, 44.23),
 (12, 3, 859.14),
 (6, 4, 85.81),
 (10, 5, 708.52),
-(3, 6, 74.81),
-(14, 7, 606.66),
-(8, 8, 572.84),
+(2, 6, 74.81),
+(5, 7, 606.66),
+(4, 8, 572.84),
 (9, 9, 580.85),
 (3, 10, 83.77),
 (8, 11, 985.98),
-(7, 12, 873.31);
+(14, 12, 187.5),
+(13, 13, 294.769),
+(15, 14, 948.102),
+(7, 15, 873.31);
 
 CREATE TABLE IF NOT EXISTS Farmer(
     farmerID INT PRIMARY KEY,
@@ -671,38 +674,38 @@ CREATE TABLE IF NOT EXISTS Ingredient(
     FOREIGN KEY (recipeID) REFERENCES Recipe(recipeID)
 );
 
-INSERT INTO Ingredient (ingredientID, name, portionSize, amountNeeded, quantityAvailable, recipeID) 
+INSERT INTO Ingredient (ingredientID, 'name', portionSize, amountNeeded, quantityAvailable, recipeID) 
 VALUES 
-(1, 'lacus morbi quis', 'Large', 2, 83, 13),
-(2, 'convallis nunc proin at', 'Large', 1, 37, null),
-(3, 'faucibus cursus urna ut', 'Large', 2, 126, 11),
-(4, 'dapibus augue vel accumsan', 'Medium', 5, 97, 14),
-(5, 'felis eu sapien cursus', 'Large', 4, 199, 4),
-(6, 'non velit nec nisi', 'Large', 3, 78, 9),
-(7, 'luctus rutrum nulla', 'Small', 3, 143, 10),
-(8, 'a libero nam', 'Large', 5, 81, 11),
-(9, 'imperdiet sapien urna', 'Large', 1, 159, 14),
-(10, 'nam tristique tortor eu', 'Medium', 1, 17, 14),
-(11, 'bibendum felis sed interdum', 'Large', 5, 94, 10),
-(12, 'nulla suscipit ligula in', 'Large', 4, 120, 13),
-(13, 'ridiculus mus etiam vel', 'Small', 1, 172, 12),
-(14, 'magna bibendum imperdiet', 'Small', 5, 170, 13),
-(15, 'neque libero convallis', 'Large', 1, 172, 2),
-(16, 'ligula in lacus curabitur', 'Small', 1, 133, 6),
-(17, 'donec odio justo sollicitudin', 'Large', 4, 73, 2),
-(18, 'duis bibendum morbi', 'Small', 3, 2, null),
-(19, 'sed tristique in', 'Small', 3, 109, 9),
-(20, 'molestie hendrerit at vulputate', 'Large', 5, 124, 1),
-(21, 'integer non velit', 'Large', 1, 195, 11),
-(22, 'ut nulla sed', 'Large', 5, 191, 8),
-(23, 'id consequat in consequat', 'Small', 1, 107, 4),
-(24, 'eget congue eget semper', 'Medium', 4, 87, 2),
-(25, 'dictumst maecenas ut massa', 'Small', 5, 81, 7),
-(26, 'amet nunc viverra', 'Large', 3, 138, 3),
-(27, 'quam pharetra magna ac', 'Medium', 2, 198, 7),
-(28, 'vitae mattis nibh', 'Small', 3, 136, 10),
-(29, 'vulputate luctus cum', 'Small', 2, 175, 10),
-(30, 'lorem vitae mattis', 'Large', 1, 97, 15);
+(1, 'Tomatoe', 'Large', 2, 83, 13),
+(2, 'Cucumber', 'Large', 1, 37, null),
+(3, 'Onion', 'Large', 2, 126, 11),
+(4, 'Carrot', 'Medium', 5, 97, 14),
+(5, 'Garlic', 'Large', 4, 199, 4),
+(6, 'Peas', 'Large', 3, 78, 9),
+(7, 'Beet', 'Small', 3, 143, 10),
+(8, 'Asparagus', 5, 81, 11),
+(9, 'Corn', 'Large', 1, 159, 14),
+(10, 'Sweet Potatoes', 'Medium', 1, 17, 14),
+(11, 'Leek', 'Large', 5, 94, 10),
+(12, 'Potatoe', 'Large', 4, 120, 13),
+(13, 'Artichoke', 'Small', 1, 172, 12),
+(14, 'Green Bean', 'Small', 5, 170, 13),
+(15, 'Brocoli', 'Large', 1, 172, 2),
+(16, 'Brussel Sprouts', 'Small', 1, 133, 6),
+(17, 'Cabbage', 'Large', 4, 73, 2),
+(18, 'Cauliflower', 'Small', 3, 2, null),
+(19, 'Celery', 'Small', 3, 109, 9),
+(20, 'Eggplant', 'Large', 5, 124, 1),
+(21, 'Chilli Pepper', 'Large', 1, 195, 11),
+(22, 'Ginger', 5, 191, 8),
+(23, 'Kale', 'Small', 1, 107, 4),
+(24, 'Pumpkins', 'Medium', 4, 87, 2),
+(25, 'Spinach', 'Small', 5, 81, 7),
+(26, 'Tumeric', 'Large', 3, 138, 3),
+(27, 'Taro', 'Medium', 2, 198, 7),
+(28, 'Mushroom', 'Small', 3, 136, 10),
+(29, 'Zucchini', 'Small', 2, 175, 10),
+(30, 'Beetroot', 'Large', 1, 97, 15);
 
 -- CREATE TABLE IF NOT EXISTS OrderIngredient
 CREATE TABLE IF NOT EXISTS OrderIngredient (

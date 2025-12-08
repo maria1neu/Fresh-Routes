@@ -23,6 +23,23 @@ def get_all_produce():
     
     except Error as e:
         return jsonify({"error": str(e)}), 500
+
+@farmer_routes.route("/ingredient", methods=["GET"])
+def get_all_ingredient():
+    try:
+        cursor = db.get_db().cursor()
+
+        cursor.execute(
+            "SELECT * " \
+            "FROM Ingredient"
+            )
+        ingredient_list = cursor.fetchall()
+        cursor.close()
+
+        return jsonify(ingredient_list), 200
+    
+    except Error as e:
+        return jsonify({"error": str(e)}), 500
     
 #Farmer lists new produce item
 @farmer_routes.route("/produce", methods=["POST"])
@@ -265,7 +282,7 @@ def get_demand(produceID):
 
         cursor.execute(
             """
-            SELECT produceID, forecastID, predictedDemand
+            SELECT produceID, forcastID, predictedDemand
             FROM Demand
             WHERE produceID = %s
             """,
