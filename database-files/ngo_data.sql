@@ -121,7 +121,7 @@ VALUES
 (2, 'Wally Truitt'),
 (3, 'Ronnica Binfield'),
 (4, 'Blanch Shattock'),
-(5, 'Griffin Petyakov')
+(5, 'Griffin Petyakov'),
 (6, 'Bob Johnson');
 
 CREATE TABLE IF NOT EXISTS Orders(

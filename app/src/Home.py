@@ -136,7 +136,7 @@ with col3:
             "authenticated": True,
             "role": "driver",
             "first_name": "Bob",
-            "driver_id": 1  # Bob uses driver ID 1 (Cassey Raylton's data for demo)
+            "driver_id": 6  # Bob Johnson
         })
         st.switch_page("pages/22_Driver_Home.py")
 

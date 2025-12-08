@@ -180,15 +180,27 @@ def get_availability(driverID):
         cursor = db.get_db().cursor()
 
         cursor.execute(
-            """SELECT availabilityID, availStartTime, availEndTime, locationZone, date, isAvailable, driverID
+            """SELECT availibilityID, availStartTime, availEndTime, date, isAvailable, DriverID
             FROM DriverAvailability
-            WHERE driverID = %s""",
+            WHERE DriverID = %s""",
             (driverID,),
             )
-        order_list = cursor.fetchall()
+        rows = cursor.fetchall()
         cursor.close()
 
-        return jsonify(order_list), 200
+        # Convert timedelta and date objects to strings for JSON serialization
+        result = []
+        for row in rows:
+            result.append({
+                'availibilityID': row['availibilityID'],
+                'availStartTime': str(row['availStartTime']) if row['availStartTime'] else None,
+                'availEndTime': str(row['availEndTime']) if row['availEndTime'] else None,
+                'date': str(row['date']) if row['date'] else None,
+                'isAvailable': bool(row['isAvailable']),
+                'DriverID': row['DriverID']
+            })
+
+        return jsonify(result), 200
     
     except Error as e:
         return jsonify({"error": str(e)}), 500

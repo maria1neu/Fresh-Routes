@@ -79,7 +79,8 @@ availability_data = fetch_availability(driver_id)
 availability_by_date = {}
 for entry in availability_data:
     # Handle different date formats
-    date_val = entry[4] if isinstance(entry, (list, tuple)) else entry.get('date')
+    # Column order: availibilityID, availStartTime, availEndTime, date, isAvailable, DriverID
+    date_val = entry[3] if isinstance(entry, (list, tuple)) else entry.get('date')
     if date_val:
         # Convert to string if needed
         if hasattr(date_val, 'strftime'):
@@ -90,7 +91,7 @@ for entry in availability_data:
             'id': entry[0] if isinstance(entry, (list, tuple)) else entry.get('availibilityID'),
             'start': entry[1] if isinstance(entry, (list, tuple)) else entry.get('availStartTime'),
             'end': entry[2] if isinstance(entry, (list, tuple)) else entry.get('availEndTime'),
-            'available': entry[5] if isinstance(entry, (list, tuple)) else entry.get('isAvailable')
+            'available': entry[4] if isinstance(entry, (list, tuple)) else entry.get('isAvailable')
         }
 
 # ---- Layout: Calendar + Settings ----
