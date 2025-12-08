@@ -7,53 +7,73 @@ import datetime
 # Initialize sidebar
 SideBarLinks()
 
-
-
 st.title("Add New Produce")
 
-# API endpoint
-API_URL = "http://web-api:4000/Produce/Produce"
+API_URL = "http://web-api:4000"
 
-# Create a form for NGO details
-with st.form("add_produce_form"):
-    st.subheader("Required Produce Information")
+st.subheader("Required Produce Information")
 
-    # Required fields
-    produce_name = st.text_input("Produce Name *")
-    harvest_date = st.text_input("Harvest Date *")
-    quantity_available = st.text_input("Quantity *" )
-    unit_available = st.text_input("Unit *")
+def get_next_inventory_id():
+    try:
+        response = requests.get(f"{API_URL}/f/inventory")
+        if response.status_code == 200:
+            entries = response.json()
 
-    # Form submission button
-    submitted = st.form_submit_button("Add Location")
+            if len(entries) == 0:
+                return 1  # start at 1 if empty table
 
-    if submitted:
-        # Validate required fields
-        if not all([produce_name, harvest_date, quantity_available, unit_available]):
-            st.error("Please fill in all required fields marked with *")
+            # Find max ID
+            max_id = max(item["inventoryID"] for item in entries)
+            return max_id + 1
         else:
-            # Prepare the data for API
-            ngo_data = {
-                "produce_name": produce_name,
-                "harvest_date": harvest_date,
-                "quantity_available": quantity_available,
-                "unit_available": unit_available,
-                "owner_id": st.session_state['user_id']
-            }
+            st.error("Could not fetch inventory list")
+            return 1
+    except:
+        st.error("API connection failed — cannot retrieve inventory IDs")
+        return 1
+    
+if "inventoryID" not in st.session_state:
+    st.session_state.inventoryID = get_next_inventory_id()
 
-            try:
-                # Send POST request to API
-                response = requests.post(API_URL, json=ngo_data)
+with st.form("inventory_form"):
 
-                if response.status_code == 201:
-                    st.success("Produce added successfully!")
-                    # Clear the form
-                    st.rerun()
-                else:
-                    st.error(
-                        f"Failed to add Produce: {response.json().get('error', 'Unknown error')}"
-                    )
+    col1, col2, col3, col4, col5 = st.columns([.25, 1.5, 1, .5, .25], vertical_alignment="bottom", width="stretch")
+    farmerID = col2.number_input("Farmer ID", min_value=1, step=1)
+    inventoryID = col1.text_input(
+        "Inventory",
+        value=st.session_state.inventoryID,
+        disabled=True
+    )
+    produceID = col3.number_input("Produce ID", min_value=1, step=1)
+    quantity = col4.number_input("Quantity", min_value=1, step=1)
+    unit = col5.selectbox( "Unit", ["kg", "lbs", "pieces"], key="produce_unit")
+    submit = st.form_submit_button("Submit")
 
-            except requests.exceptions.RequestException as e:
-                st.error(f"Error connecting to the API: {str(e)}")
-                st.info("Please ensure the API server is running")
+if submit:
+    if not all([farmerID, produceID, quantity]):
+        st.error("Please fill in all required fields.")
+    else:
+        payload = {
+            "inventoryID": st.session_state.inventoryID,
+            "produceID": int(produceID),
+            "quantity": int(quantity)
+        }
+
+        try:
+            response = requests.post(
+                f"{API_URL}/f/farmers/{int(farmerID)}/inventory",
+                json=payload
+            )
+
+            if response.status_code == 201:
+                st.success("Produce added to inventory successfully!")
+
+                # Reset for next sequential ID
+                st.session_state.inventoryID += 1
+                st.rerun()
+
+            else:
+                st.error(f"Error: {response.json().get('error')}")
+
+        except Exception as e:
+            st.error(f"Error connecting to API: {str(e)}")

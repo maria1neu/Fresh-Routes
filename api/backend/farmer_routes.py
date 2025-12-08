@@ -315,7 +315,7 @@ def get_inventory():
             SELECT o.orderID, o.status, o.customerID, o.driverID
             FROM `Order` o
             JOIN OrderProduce op ON o.orderID = op.orderID
-            JOIN InventoryEntry i ON op.produceID = i.produceID AND i.farmerID = %s
+            JOIN InventoryEntry i ON op.produceID = i.produceID
             WHERE i.farmerID = %s
 
             """,
@@ -341,3 +341,16 @@ def debug_test():
         return {"recipe_count": result["n"]}, 200
     except Exception as e:
         return {"error": str(e)}, 500
+    
+@farmer_routes.route("/inventory", methods=["GET"])
+def get_all_inventory():
+    try:
+        cursor = db.get_db().cursor()
+        cursor.execute("SELECT * FROM InventoryEntry;")
+        rows = cursor.fetchall()
+        cursor.close()
+
+        return jsonify(rows), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
