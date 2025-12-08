@@ -121,7 +121,8 @@ VALUES
 (2, 'Wally Truitt'),
 (3, 'Ronnica Binfield'),
 (4, 'Blanch Shattock'),
-(5, 'Griffin Petyakov');
+(5, 'Griffin Petyakov')
+(6, 'Bob Johnson');
 
 CREATE TABLE IF NOT EXISTS Orders(
     orderID INT PRIMARY KEY,
@@ -232,7 +233,7 @@ VALUES
  
 -- DriverAvailibilty
 CREATE TABLE IF NOT EXISTS DriverAvailability(
-    availibilityID INT PRIMARY KEY,
+    availibilityID INT AUTO_INCREMENT PRIMARY KEY,
     availStartTime TIME NOT NULL, -- change the diagram, came from timeWindow
     availEndTime TIME NOT NULL, -- change the diagram, came from timeWindow
     `date` DATE NOT NULL,

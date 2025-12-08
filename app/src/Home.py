@@ -135,7 +135,8 @@ with col3:
         st.session_state.update({
             "authenticated": True,
             "role": "driver",
-            "first_name": "Bob"
+            "first_name": "Bob",
+            "driver_id": 1  # Bob uses driver ID 1 (Cassey Raylton's data for demo)
         })
         st.switch_page("pages/22_Driver_Home.py")
 

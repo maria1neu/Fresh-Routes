@@ -193,18 +193,17 @@ def get_availability(driverID):
     except Error as e:
         return jsonify({"error": str(e)}), 500
 
-#Update driver availability days 
-@driver_routes.route("/driver/<int:driverID>/driveravailability", methods=["PUT"])
-def update_driver_availability(driverID):
+#Update driver availability days (specific entry by availabilityID)
+@driver_routes.route("/driver/<int:driverID>/driveravailability/<int:availabilityID>", methods=["PUT"])
+def update_driver_availability(driverID, availabilityID):
     try:
         data = request.get_json()
 
-        allowed_fields = ['availabilityID', 'availStartTime', 'availEndTime', 'locationZone', 'date', 'isAvailable', 'driverID']
+        allowed_fields = ['availStartTime', 'availEndTime', 'date', 'isAvailable']
         update_fields = []
         params = []
 
-        # Only allow updating a clear set of fields
-        
+        # Only allow updating specific fields
         for field in allowed_fields:
             if field in data:
                 update_fields.append(f"{field} = %s")
@@ -215,29 +214,24 @@ def update_driver_availability(driverID):
 
         cursor = db.get_db().cursor()
 
+        # Verify the entry exists and belongs to this driver
         cursor.execute(
-            """
-            SELECT availabilityID, availStartTime, availEndTime, locationZone, date, isAvailable, driverID 
-            FROM DriverAvailability 
-            WHERE driverID = %s
-            """,
-            (driverID,),
+            "SELECT availibilityID FROM DriverAvailability WHERE availibilityID = %s AND DriverID = %s",
+            (availabilityID, driverID),
         )
-        if not cursor.fetchall():
+        if not cursor.fetchone():
             cursor.close()
-            return jsonify({"error": "Driver availability entry not found"}), 404
+            return jsonify({"error": "Availability entry not found"}), 404
 
-        # executes function 
+        # Execute update
+        params.append(availabilityID)
         params.append(driverID)
-        query = f"UPDATE DriverAvailability SET {', '.join(update_fields)} WHERE driverID = %s"
+        query = f"UPDATE DriverAvailability SET {', '.join(update_fields)} WHERE availibilityID = %s AND DriverID = %s"
         cursor.execute(query, params)
         db.get_db().commit()
         cursor.close()
 
         return jsonify({"message": "Availability updated successfully"}), 200
-
-    except Error as e:
-        return jsonify({"error": str(e)}), 500
 
     except Error as e:
         return jsonify({"error": str(e)}), 500
@@ -263,6 +257,53 @@ def get_driver_route(driverID):
             return jsonify({"error": "No traffic records found for this driver"}), 404
 
         return jsonify(traffic), 200
+
+    except Error as e:
+        return jsonify({"error": str(e)}), 500
+    
+# Post for adding availability to the database
+@driver_routes.route("/driver/<int:driverID>/driveravailability", methods=["POST"])
+def create_driver_availability(driverID):
+    try:
+        data = request.get_json()
+
+        required_fields = ["date", "availStartTime", "availEndTime", "isAvailable"]
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Missing required field: {field}"}), 400
+
+        cursor = db.get_db().cursor()
+
+        # Check if availability already exists for this date and driver
+        cursor.execute(
+            "SELECT availibilityID FROM DriverAvailability WHERE `date` = %s AND DriverID = %s",
+            (data["date"], driverID),
+        )
+        if cursor.fetchone():
+            cursor.close()
+            return jsonify({"error": "Availability already exists for this date. Use PUT to update."}), 409
+
+        # Insert new availability (ID auto-generated)
+        query = """
+            INSERT INTO DriverAvailability (availStartTime, availEndTime, `date`, isAvailable, DriverID)
+            VALUES (%s, %s, %s, %s, %s)
+        """
+        cursor.execute(
+            query,
+            (
+                data["availStartTime"],
+                data["availEndTime"],
+                data["date"],
+                data["isAvailable"],
+                driverID,
+            ),
+        )
+        
+        db.get_db().commit()
+        new_id = cursor.lastrowid
+        cursor.close()
+
+        return jsonify({"message": "Availability created successfully", "availabilityID": new_id}), 201
 
     except Error as e:
         return jsonify({"error": str(e)}), 500
